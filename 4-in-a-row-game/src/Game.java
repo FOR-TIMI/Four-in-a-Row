@@ -74,7 +74,10 @@ public class Game {
 	
 	private void playerTurn(Player currentPlayer)throws Exception {
 		System.out.println("\n---------Player " + currentPlayer.getPlayerNumber() +"'s turn -----\n");
-		int move = currentPlayer.makeMove();
+		
+		//To check the array. we assume that the user's input starts from 1
+		// so to be within the bounds of the array.
+		int move = currentPlayer.makeMove() - 1;
 		
 		//to check if the move is illegal 
 		if(this.board.columnFull(move)) {

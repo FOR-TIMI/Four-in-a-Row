@@ -1,30 +1,35 @@
+
 import java.util.Scanner;
 
 public class Player {
-	private String name;
+	
+	//inital variables
+	private String playerName;
 	private String playerNumber;
 	private static Scanner scanner = new Scanner(System.in);
 	
-	public Player(String name, String playerNumber) {
-		this.name = name;
+	//constructor need playerName and playerNumber
+	public Player(String playerName, String playerNumber) {
+		this.playerName = playerName;
 		this.playerNumber = playerNumber;
 	}
 
-	public String getName() {
-		return name;
+	public String getPlayerName() {
+		return this.playerName;
 	}
 
 	public String getPlayerNumber() {
-		return playerNumber;
+		return this.playerNumber;
 	}
 	
-	public int MakeMove() {
-		System.out.println("Make a move(choose a column to place a token in): ");
+	public int makeMove() {
+		System.out.println("What column would you like to place your token?");
 		return scanner.nextInt();
 	}
 	
-	public String toString() {
-		return "Player "+playerNumber+ " is " + name;
+	public String toString(){
+		return "Player " +playerNumber+ " is " + playerName;
 	}
-
+	
+	
 }

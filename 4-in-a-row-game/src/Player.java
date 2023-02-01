@@ -1,9 +1,8 @@
 
 import java.util.Scanner;
 
-public class Player {
-	
-	//inital variables
+public class Player {	
+	//initial variables
 	private String playerName;
 	private String playerNumber;
 	private static Scanner scanner = new Scanner(System.in);
@@ -29,7 +28,5 @@ public class Player {
 	
 	public String toString(){
 		return "Player " +playerNumber+ " is " + playerName;
-	}
-	
-	
+	}		
 }

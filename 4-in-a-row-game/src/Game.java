@@ -8,10 +8,11 @@ public class Game {
 	private int currentPlayerIndex;
 	private int numOfPlayers;
 	
-	
+	//Scanner
 	private Scanner scanner = new Scanner(System.in);
 	
-	public Game() throws Exception {
+	//Game constructor
+	public Game(){
 	    //create a new board;
 	    this.board = new Board();
 	    //setup game;
@@ -74,40 +75,47 @@ public class Game {
 		System.out.println("------------------------------------------------");
 	}
 	
-	private void playerTurn(Player currentPlayer)throws Exception {
-		System.out.println("\n---------Player " + currentPlayer.getPlayerNumber() +"'s turn -----\n");
-		
-		//To check the array. we assume that the user's input starts from 1
-		// so to be within the bounds of the array.
-		int move = currentPlayer.makeMove() - 1;
-		
-		//to check if the move is illegal 
-		if(this.board.columnFull(move)) {
-			throw new Exception("Column is full.");
+	private void playerTurn(Player currentPlayer){
+		try {
+			System.out.println("\n---------Player " + currentPlayer.getPlayerNumber() +"'s turn -----\n");
+			
+			//To check the array. we assume that the user's input starts from 1
+			// so to be within the bounds of the array.
+			int move = currentPlayer.makeMove() - 1;
+			
+			//to check if the move is illegal 
+			if(this.board.columnFull(move)) {
+				throw new Exception("Column is full.");
+			}
+			
+			//To make sure our column numbers are always valid
+			if(move< 0 || move >= this.board.getColumns()){
+				throw new Exception("Invalid column number.");
+			}
+			
+			//update board to add token
+			this.board.addToken(move, currentPlayer.getPlayerNumber());
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		//To make sure our column numbers are always valid
-		if(move< 0 || move >= this.board.getColumns()){
-			throw new Exception("Invalid column number.");
-		}
-		
-		//update board to add token
-		this.board.addToken(move, currentPlayer.getPlayerNumber());
 		
 
 	}
 	
-    private void play() throws Exception {	
-    	while(
-    	  !this.board.boardFull()	
-    	) { 
+    private void play() {	
+    	while(!this.board.boardFull()){ 
     		Player currentPlayer = players[currentPlayerIndex];
     		
     		//print board
     		this.board.printBoard();
     		
     		//to make a move
-    		this.playerTurn(currentPlayer);
+    		try {
+				this.playerTurn(currentPlayer);
+			} catch (Exception e) {
+				//catch block
+				System.out.println("Something went wrong trying to add a token the playerTurn function: " + e);;
+			}
     		
     		//if a player wins just print the current player
     		if(this.board.checkIfPlayerIsWinner(currentPlayer.getPlayerNumber())) {

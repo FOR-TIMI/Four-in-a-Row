@@ -12,10 +12,12 @@ public class Game {
 	private Scanner scanner = new Scanner(System.in);
 	
 	public Game() throws Exception {
+	    //create a new board;
 	    this.board = new Board();
+	    //setup game;
 	    this.setupGame();
-		//start game;
-		this.play();
+	    //start game;
+	    this.play();
 	}
 	
 	//To setup a game

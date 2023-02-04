@@ -1,4 +1,4 @@
-# 4 in a Row Game
+# 4 in a Row Game -console game
 This 4 in a Row game is built using Java and runs in the console. It is a classic game where players can win left diagonally, right diagonally, horizontally, and vertically by connecting four of their tokens in a row.
 
 ## Classes

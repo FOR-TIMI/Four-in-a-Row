@@ -8,7 +8,6 @@ public class Board {
 	private int columns;
 	
 	
-	
 	public int getRows() {
 		return rows;
 	}
@@ -37,8 +36,7 @@ public class Board {
 		    columns = scanner.nextInt();
 		}
 
-		
-		
+				
 		board = new String[rows][columns];
 
         for (int i = 0; i < rows; i++) {
